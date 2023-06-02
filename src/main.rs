@@ -23,14 +23,6 @@ unsafe extern "system" fn wind_proc(
         let h_raw_input: HRAWINPUT = l_param as HRAWINPUT;
         let mut size: UINT = mem::size_of::<RAWINPUT>() as UINT;
 
-        GetRawInputData(
-            h_raw_input,
-            RID_INPUT,
-            ptr::null_mut(),
-            &mut size,
-            mem::size_of::<RAWINPUTHEADER>() as UINT,
-        );
-
         let mut buffer: Vec<u8> = Vec::with_capacity(size as usize);
         GetRawInputData(
             h_raw_input,
