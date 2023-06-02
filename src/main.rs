@@ -89,8 +89,6 @@ fn main() {
         hwndTarget: h_wnd,
     };
 
-    println!("Successfully registered device");
-
     unsafe {
         RegisterRawInputDevices(
             &rid as *const RAWINPUTDEVICE,
@@ -98,6 +96,8 @@ fn main() {
             mem::size_of::<RAWINPUTDEVICE>() as u32,
         );
     }
+    
+    println!("Successfully registered device");
 
     let mut msg: MSG = unsafe { mem::zeroed() };
 
